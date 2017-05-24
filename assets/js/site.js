@@ -215,9 +215,9 @@ $(document).ready(function(){
   var g = svg.append("g");
 
   queue()
-    .defer(d3.json, "../../data/countries.json")
-    .defer(d3.json, "../../data/land.json")
-    .defer(d3.json, "../../data/world.json")
+    .defer(d3.json, "/ppp/data/countries.json")
+    .defer(d3.json, "/ppp/data/land.json")
+    .defer(d3.json, "/ppp/data/world.json")
     .await(drawMap);
 
   function drawMap(error, c, l, w) {
@@ -633,7 +633,7 @@ $(document).ready(function(){
 
 
   function showNationalTrends() {
-    d3.json("../../data/points_v2.json", function(error,p) {
+    d3.json("/ppp/data/points_v2.json", function(error,p) {
       svg.select("g").selectAll(".points")
         .data(topojson.feature(p, p.objects.ppp_points).features)
         .enter().append("path")
@@ -684,7 +684,7 @@ $(document).ready(function(){
   }
   function showRegionalTrends(t) {
 
-    d3.json("../../data/regions_v3.json", function(error, regions) {
+    d3.json("/ppp/data/regions_v3.json", function(error, regions) {
       svg.select("g").selectAll(".regional-points")
         .data(topojson.feature(regions, regions.objects["regional-points"]).features)
         .enter().append("path")
